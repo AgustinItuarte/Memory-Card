@@ -1,4 +1,36 @@
-function App() {
+import React, {useState} from 'react';
+import uniqid from 'uniqid';
+
+function App() { 
+
+  const [cards, setCards] = useState([
+    {src: '',
+     id: uniqid() },
+    {src: '',
+    id: uniqid() },
+    {src: '',
+    id: uniqid() },
+    {src: '',
+    id: uniqid() },
+    {src: '',
+    id: uniqid() },
+    {src: '',
+    id: uniqid() },
+    {src: '',
+    id: uniqid() },
+    {src: '',
+    id: uniqid() },
+    {src: '',
+    id: uniqid() },
+    {src: '',
+    id: uniqid() },
+    {src: '',
+    id: uniqid() },
+    {src: '',
+    id: uniqid() },
+  ]
+  )
+
   return (
     <div className="App">
       <div className="header">
