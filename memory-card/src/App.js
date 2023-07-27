@@ -17,7 +17,7 @@ import image12 from './assets/Tiax.webp';
 function App() { 
 
   const [score, setScore] = useState(0);
-  const [Bestscore, setBestScore] = useState(0);
+  const [bestScore, setbestScore] = useState(0);
 
   const [cards, setCards] = useState([
     {src: image1,
@@ -66,6 +66,8 @@ function App() {
   function handleScore(card) {
 
     if (card.target.dataset.clicked === 'true') {
+      let bestScore = score;
+      setbestScore(bestScore);
       setScore(0);
       const newArray = cards;
       newArray.forEach(element => {
@@ -116,7 +118,7 @@ function App() {
       <div className="header">
         <div className="title">Title</div>
         <div className="score">Score {score}</div>
-        <div className="best-Score">Best Score {Bestscore}</div>
+        <div className="best-Score">Best Score {bestScore}</div>
       </div>
       <div className="card-list">
         <div className='cards'>
