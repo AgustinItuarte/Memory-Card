@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import uniqid from 'uniqid';
 import LoadCards from './components/Cards';
 import image1 from './assets/Ajantis.webp';
@@ -56,9 +56,13 @@ function App() {
   ]
   );
 
-  function shuffleCards() {
+  useEffect(() => {
+    console.log(cards)
+  });
+  
+  function shuffleCards(array) { // Randomize Cards Position on Click.
 
-    let newArray = [...cards];
+    let newArray = array;
     
     for (let i = newArray.length - 1; i > 0; i--) {
       
@@ -72,6 +76,24 @@ function App() {
     
   };
 
+  function changeCardStatus(card) { // Change Card status when clicked from false to true.
+
+    let id = card.target.dataset.id
+
+    const newArray = cards.map(card => {
+
+      if (card.id === id) {
+        return {...card, clicked: true};
+      } else {
+        return card;
+      }
+
+    })
+
+    setCards(newArray);
+    shuffleCards(newArray);
+  };
+
   return (
     <div className="App">
       <div className="header">
@@ -80,7 +102,7 @@ function App() {
       </div>
       <div className="card-list">
         <div className='cards'>
-          <LoadCards shuffleCards={shuffleCards} cardsArray={cards}></LoadCards>
+          <LoadCards clickedCardState={changeCardStatus} cardsArray={cards}></LoadCards>
         </div>
       </div>
     </div>
