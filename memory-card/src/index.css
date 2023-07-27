@@ -17,7 +17,7 @@ body, #root, .App {
 
 .header {
   height: 20%;
-  background-color: blue;
+  background-color: rgb(0, 102, 255);
 }
 
 .card-list {

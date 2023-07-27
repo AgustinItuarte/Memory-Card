@@ -16,6 +16,9 @@ import image12 from './assets/Tiax.webp';
 
 function App() { 
 
+  const [score, setScore] = useState(0);
+  const [Bestscore, setBestScore] = useState(0);
+
   const [cards, setCards] = useState([
     {src: image1,
      id: uniqid(),
@@ -59,6 +62,20 @@ function App() {
   useEffect(() => {
     console.log(cards)
   });
+
+  function handleScore(card) {
+
+    if (card.target.dataset.clicked === 'true') {
+      setScore(0);
+      const newArray = cards;
+      newArray.forEach(element => {
+        element.clicked = false;
+      });
+    } else {
+      setScore(score+1);
+    }
+
+  };
   
   function shuffleCards(array) { // Randomize Cards Position on Click.
 
@@ -98,11 +115,12 @@ function App() {
     <div className="App">
       <div className="header">
         <div className="title">Title</div>
-        <div className="score">Score</div>
+        <div className="score">Score {score}</div>
+        <div className="best-Score">Best Score {Bestscore}</div>
       </div>
       <div className="card-list">
         <div className='cards'>
-          <LoadCards clickedCardState={changeCardStatus} cardsArray={cards}></LoadCards>
+          <LoadCards handleScore={handleScore} changeCardStatus={changeCardStatus} cardsArray={cards}></LoadCards>
         </div>
       </div>
     </div>
