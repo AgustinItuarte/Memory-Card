@@ -63,7 +63,7 @@ function App() {
     console.log(cards)
   });
 
-  function handleScore(card) { // Handles scores.
+  function handleScore(card) { // Handles score and best score assign logic.
 
     if (card.target.dataset.clicked === 'true') {
 
@@ -124,9 +124,17 @@ function App() {
   return (
     <div className="App">
       <div className="header">
-        <div className="title">Title</div>
-        <div className="score">Score {score}</div>
-        <div className="best-Score">Best Score {bestScore}</div>
+        
+        <div className='left-header-content'>
+          <h1 className="title">Memory Card Game</h1>
+          <p className='description'>Don't click in any item more than once.</p>
+        </div>
+        
+        <div className='right-header-content'>
+          <div className="score">Score: {score}</div>
+          <div className="best-Score">Best Score: {bestScore}</div>
+        </div>
+        
       </div>
       <div className="card-list">
         <div className='cards'>
