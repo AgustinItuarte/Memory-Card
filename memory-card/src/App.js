@@ -63,18 +63,26 @@ function App() {
     console.log(cards)
   });
 
-  function handleScore(card) {
+  function handleScore(card) { // Handles scores.
 
     if (card.target.dataset.clicked === 'true') {
-      let bestScore = score;
-      setbestScore(bestScore);
+
+      if (score > bestScore) {
+        setbestScore(score);
+      } else {
+        setbestScore(bestScore);
+      }
+
       setScore(0);
       const newArray = cards;
       newArray.forEach(element => {
         element.clicked = false;
       });
+      setCards(newArray)
     } else {
-      setScore(score+1);
+
+      setScore(score + 1);
+      
     }
 
   };
